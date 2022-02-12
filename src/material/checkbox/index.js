@@ -10,10 +10,13 @@ const Checkbox = (props) => {
 
   return (
     <label className="checkbox">
-      {label}
       <input {...otherCheckboxProps} type="checkbox" />
-      <span className="checkmark" />
-      <FontAwesomeIcon icon={faCheck} className="checkmarkIcon" />
+
+      <div className="checkmark">
+        <FontAwesomeIcon icon={faCheck} className="checkmarkIcon" />
+      </div>
+
+      {label}
     </label>
   );
 };

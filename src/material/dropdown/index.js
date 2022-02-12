@@ -7,7 +7,6 @@ const DropDown = (props) => {
     options,
     selectedOptions,
     updateSelectedOptions,
-    onUnselect,
     ...otherProps
   } = props;
 

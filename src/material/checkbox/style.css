@@ -1,12 +1,13 @@
 .checkbox {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   position: relative;
-  padding-left: 35px;
   cursor: pointer;
   color: rgb(6, 43, 117);
   font-size: 14px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 20px;
   width: fit-content;
 }
 
@@ -22,26 +23,24 @@
   border: 2px solid rgb(20, 148, 244);
 }
 
-.checkbox > input:checked ~ .checkmarkIcon {
+.checkbox > input:checked ~ .checkmark .checkmarkIcon {
   display: block;
 }
 
 .checkmark {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  margin-right: 15px;
   background: rgb(250, 251, 252);
   border-radius: 4px;
   border: 2px solid rgb(238, 242, 246);
   height: 24px;
   width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .checkmarkIcon {
   display: none;
-  position: absolute;
-  top: calc(50% - 7px);
-  left: 6px;
   color: #ffffff;
 }

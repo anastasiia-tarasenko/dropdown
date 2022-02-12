@@ -5,7 +5,7 @@
   background-color: rgb(20, 148, 244);
   font-size: 16px;
   font-weight: 500;
-  height: 48px;
+  min-height: 48px;
   width: 100%;
   margin: 0;
   padding: 10px;
