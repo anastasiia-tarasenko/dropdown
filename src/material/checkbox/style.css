@@ -1,0 +1,46 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  cursor: pointer;
+  color: rgb(6, 43, 117);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  width: fit-content;
+}
+
+.checkbox > input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  z-index: -1;
+}
+
+.checkbox > input:checked ~ .checkmark {
+  background: rgb(20, 148, 244);
+  border: 2px solid rgb(20, 148, 244);
+}
+
+.checkbox > input:checked ~ .checkmark .checkmarkIcon {
+  display: block;
+}
+
+.checkmark {
+  margin-right: 15px;
+  background: rgb(250, 251, 252);
+  border-radius: 4px;
+  border: 2px solid rgb(238, 242, 246);
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.checkmarkIcon {
+  display: none;
+  color: #ffffff;
+}

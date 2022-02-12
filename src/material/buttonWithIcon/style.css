@@ -1,0 +1,18 @@
+.btnWithIcon {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: rgb(155, 170, 200);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.btnWithIcon .btnIcon {
+  margin-right: 6px;
+  font-size: 18px;
+}

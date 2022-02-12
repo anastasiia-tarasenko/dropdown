@@ -1,0 +1,36 @@
+.search {
+  padding: 5px 10px;
+  background: rgb(250, 251, 252);
+  border-radius: 4px;
+  height: 35px;
+  max-width: 210px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.search .searchIcon {
+  color: rgb(6, 43, 117, 0.2);
+}
+
+.search > input {
+  margin-left: 4px;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(6, 43, 117, 0.4);
+}
+
+.search > input:focus {
+  outline: none;
+}
+
+.search > input::placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(6, 43, 117, 0.4);
+}

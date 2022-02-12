@@ -1,6 +1,11 @@
-/* ++++++++++ --------------- EXPORTS --------------- ++++++++++ */
-export const SAMPLE_ACTION = 'SAMPLE_ACTION'; // please update and add more if necessary
-export const sampleAction = (sample) => ({
-    type: SAMPLE_ACTION,
-    sample
+export const SET_COUNTRIES = "SET_COUNTRIES";
+export const setCountries = (countries) => ({
+  type: SET_COUNTRIES,
+  countries,
+});
+
+export const UPDATE_SELECT_COUNTRIES = "UPDATE_SELECT_COUNTRIES";
+export const updateSelectedCountries = (countries) => ({
+  type: UPDATE_SELECT_COUNTRIES,
+  countries,
 });
