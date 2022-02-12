@@ -11,11 +11,18 @@ import {
 import Search from "../search";
 import Button from "../button";
 import ButtonWithIcon from "../buttonWithIcon";
+import Checkbox from "../checkbox";
 
 import "./style.css";
 
 const DropDownView = (props) => {
   const { options, isOpen, setOpen } = props;
+
+  const getOptionItem = (item) => (
+    <Checkbox key={item.value} label={item.label} />
+  );
+
+  const optionsListElement = options.map(getOptionItem);
 
   const optionsContentElement = isOpen && (
     <div className={clsx("optionsContent", "fadeIn")}>
@@ -24,7 +31,7 @@ const DropDownView = (props) => {
       <ButtonWithIcon icon={faCirclePlus} label="Select all" />
       <ButtonWithIcon icon={faCircleXmark} label="Select none" />
 
-      <div className="optionsList"></div>
+      <div className="optionsList">{optionsListElement}</div>
 
       <Button label="Filter" />
     </div>
