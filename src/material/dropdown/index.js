@@ -18,12 +18,24 @@ const DropDown = (props) => {
     (state) => state.dropdownStatus.selectedCountries
   );
 
+  const convertSelectedDataToArray = () =>
+    Object.entries(selectedData).map(([value, label]) => ({
+      label,
+      value,
+    }));
+
   const onSelect = (value) => {
-    if (selectedData[value.value]) {
-      dispatch(removeCountry(value));
-    } else {
-      dispatch(selectCountry(value));
-    }
+    const callback = selectedData[value.value] ? removeCountry : selectCountry;
+
+    dispatch(callback(value));
+  };
+
+  const onFilter = () => {
+    setOpen(false);
+
+    const result = convertSelectedDataToArray();
+
+    console.log("FILTER", result);
   };
 
   return (
@@ -33,6 +45,8 @@ const DropDown = (props) => {
       setOpen={setOpen}
       selectedData={selectedData}
       onSelect={onSelect}
+      onFilter={onFilter}
+      convertSelectedDataToArray={convertSelectedDataToArray}
     />
   );
 };

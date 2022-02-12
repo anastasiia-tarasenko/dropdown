@@ -16,7 +16,15 @@ import Checkbox from "../checkbox";
 import "./style.css";
 
 const DropDownView = (props) => {
-  const { options, isOpen, setOpen, onSelect, selectedData } = props;
+  const {
+    options,
+    isOpen,
+    setOpen,
+    onSelect,
+    selectedData,
+    onFilter,
+    convertSelectedDataToArray,
+  } = props;
 
   const getOptionItem = (item) => (
     <Checkbox
@@ -38,9 +46,15 @@ const DropDownView = (props) => {
 
       <div className="optionsList">{optionsListElement}</div>
 
-      <Button label="Filter" />
+      <Button label="Filter" onClick={onFilter} />
     </div>
   );
+
+  const countOfSelectedData = convertSelectedDataToArray().length;
+
+  const title = isOpen || !countOfSelectedData 
+    ? "All Countries"
+    : `${countOfSelectedData} Countries`;
 
   return (
     <div className="dropdown">
@@ -52,7 +66,7 @@ const DropDownView = (props) => {
 
         <div className="content">
           <p className="title">Countries</p>
-          <p className="value">All Countries</p>
+          <p className="value">{title}</p>
         </div>
 
         <FontAwesomeIcon icon={faCaretDown} className="arrowIcon" />
@@ -74,6 +88,8 @@ DropDownView.propTypes = {
   selectedData: PropTypes.object,
   setOpen: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
+  onFilter: PropTypes.func.isRequired,
+  convertSelectedDataToArray: PropTypes.func.isRequired,
 };
 
 export default DropDownView;
