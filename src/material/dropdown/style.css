@@ -66,6 +66,10 @@
   line-height: 22px;
 }
 
+.content .value.result {
+  color: rgb(20, 148, 244);
+}
+
 .arrowIcon {
   margin-left: auto;
   color: rgb(6, 43, 117);

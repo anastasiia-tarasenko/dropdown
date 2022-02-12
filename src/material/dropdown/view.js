@@ -39,7 +39,7 @@ const DropDownView = (props) => {
   const optionsListElement = options.map(getOptionItem);
 
   const optionsContentElement = isOpen && (
-    <div className={clsx("optionsContent", "fadeIn")}>
+    <div className="optionsContent fadeIn">
       <Search placeholder="Search Site" />
 
       <ButtonWithIcon icon={faCirclePlus} label="Select all" />
@@ -53,10 +53,12 @@ const DropDownView = (props) => {
 
   const countOfSelectedData = convertToArray().length;
 
-  const title =
-    isOpen || !countOfSelectedData
-      ? `All ${label}`
-      : `${countOfSelectedData} ${label}`;
+  const valueLabelElement =
+    isOpen || !countOfSelectedData ? (
+      <p className="value">{`All ${label}`}</p>
+    ) : (
+      <p className="value result">{`${countOfSelectedData} ${label}`}</p>
+    );
 
   return (
     <div className="dropdown">
@@ -68,7 +70,7 @@ const DropDownView = (props) => {
 
         <div className="content">
           <p className="title">{label}</p>
-          <p className="value">{title}</p>
+          {valueLabelElement}
         </div>
 
         <FontAwesomeIcon icon={faCaretDown} className="arrowIcon" />
