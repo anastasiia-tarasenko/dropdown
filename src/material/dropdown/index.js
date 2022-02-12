@@ -4,7 +4,7 @@ import DropDownView from "./view";
 
 const DropDown = (props) => {
   const { options } = props;
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(true);
 
   return <DropDownView options={options} isOpen={isOpen} setOpen={setOpen} />;
 };
