@@ -24,6 +24,8 @@ const DropDownView = (props) => {
     onSelect,
     selectedOptions,
     onFilter,
+    onSelectAll,
+    onSelectNone,
     convertToArray,
   } = props;
 
@@ -42,8 +44,17 @@ const DropDownView = (props) => {
     <div className="optionsContent fadeIn">
       <Search placeholder="Search Site" />
 
-      <ButtonWithIcon icon={faCirclePlus} label="Select all" />
-      <ButtonWithIcon icon={faCircleXmark} label="Select none" />
+      <ButtonWithIcon
+        icon={faCirclePlus}
+        label="Select all"
+        onClick={onSelectAll}
+      />
+
+      <ButtonWithIcon
+        icon={faCircleXmark}
+        label="Select none"
+        onClick={onSelectNone}
+      />
 
       <div className="optionsList">{optionsListElement}</div>
 

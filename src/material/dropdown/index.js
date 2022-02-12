@@ -39,6 +39,19 @@ const DropDown = (props) => {
     console.log("FILTER", result);
   };
 
+  const onSelectAll = () => {
+    const newSelectedOptions = options.reduce(
+      (obj, cur) => ({ ...obj, [cur.value]: cur.label }),
+      {}
+    );
+
+    updateSelectedOptions(newSelectedOptions);
+  };
+
+  const onSelectNone = () => {
+    updateSelectedOptions({});
+  };
+
   return (
     <DropDownView
       {...otherProps}
@@ -49,6 +62,8 @@ const DropDown = (props) => {
       onSelect={onSelect}
       onFilter={onFilter}
       convertToArray={convertToArray}
+      onSelectAll={onSelectAll}
+      onSelectNone={onSelectNone}
     />
   );
 };
