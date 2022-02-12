@@ -31,6 +31,8 @@ const DropDownView = (props) => {
     convertToArray,
   } = props;
 
+  const countOfSelectedData = convertToArray().length;
+
   const getOptionItem = (item) => (
     <Checkbox
       key={item.value}
@@ -64,11 +66,9 @@ const DropDownView = (props) => {
 
       <div className="optionsList">{optionsListElement}</div>
 
-      <Button label="Filter" onClick={onFilter} />
+      <Button label="Filter" onClick={onFilter} disabled={!countOfSelectedData} />
     </div>
   );
-
-  const countOfSelectedData = convertToArray().length;
 
   const valueLabelElement =
     isOpen || !countOfSelectedData ? (
