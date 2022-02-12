@@ -1,7 +1,6 @@
 import {
-  SELECT_COUNTRY,
+  UPDATE_SELECT_COUNTRIES,
   SET_COUNTRIES,
-  REMOVE_COUNTRY,
 } from "../actions/dropdownstatus";
 
 const defaultState = {
@@ -20,33 +19,13 @@ export const dropdownStatus = (state = defaultState, action) => {
       return newState;
     }
 
-    case SELECT_COUNTRY: {
-      const { value, label } = action.country;
-
+    case UPDATE_SELECT_COUNTRIES: {
       const newState = {
         ...state,
-        selectedCountries: {
-          ...state.selectedCountries,
-          [value]: label,
-        },
+        selectedCountries: {...action.countries},
       };
 
-      console.log("SELECT_COUNTRY", newState);
-      return newState;
-    }
-
-    case REMOVE_COUNTRY: {
-      const { value } = action.country;
-      const newSelectedCountries = { ...state.selectedCountries };
-
-      delete newSelectedCountries[value];
-
-      const newState = {
-        ...state,
-        selectedCountries: newSelectedCountries,
-      };
-
-      console.log("REMOVE_COUNTRY", newState);
+      console.log("UPDATE_SELECT_COUNTRIES", newState);
       return newState;
     }
 

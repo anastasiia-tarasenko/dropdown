@@ -1,63 +1,58 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
+import { Props } from "./propTypes";
 import DropDownView from "./view";
-import {
-  selectCountry,
-  removeCountry,
-} from "../../state/actions/dropdownstatus";
 
 const DropDown = (props) => {
-  const { options } = props;
-
-  const dispatch = useDispatch();
+  const {
+    options,
+    selectedOptions,
+    updateSelectedOptions,
+    onUnselect,
+    ...otherProps
+  } = props;
 
   const [isOpen, setOpen] = useState(true);
 
-  const selectedData = useSelector(
-    (state) => state.dropdownStatus.selectedCountries
-  );
-
-  const convertSelectedDataToArray = () =>
-    Object.entries(selectedData).map(([value, label]) => ({
+  const convertToArray = () =>
+    Object.entries(selectedOptions).map(([value, label]) => ({
       label,
       value,
     }));
 
   const onSelect = (value) => {
-    const callback = selectedData[value.value] ? removeCountry : selectCountry;
+    let result = { ...selectedOptions };
 
-    dispatch(callback(value));
+    if (selectedOptions[value.value]) {
+      delete result[value.value];
+    } else {
+      result = { ...result, [value.value]: value.label };
+    }
+
+    updateSelectedOptions(result);
   };
 
   const onFilter = () => {
     setOpen(false);
 
-    const result = convertSelectedDataToArray();
+    const result = convertToArray();
 
     console.log("FILTER", result);
   };
 
   return (
     <DropDownView
+      {...otherProps}
       options={options}
+      selectedOptions={selectedOptions}
       isOpen={isOpen}
       setOpen={setOpen}
-      selectedData={selectedData}
       onSelect={onSelect}
       onFilter={onFilter}
-      convertSelectedDataToArray={convertSelectedDataToArray}
+      convertToArray={convertToArray}
     />
   );
 };
 
-DropDown.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
+DropDown.propTypes = Props;
 
 export default DropDown;

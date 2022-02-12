@@ -1,9 +1,8 @@
 import React from "react";
 import clsx from "clsx";
-import PropTypes from "prop-types";
+import { PropsView } from "./propTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEarthAfrica,
   faCaretDown,
   faCirclePlus,
   faCircleXmark,
@@ -17,20 +16,22 @@ import "./style.css";
 
 const DropDownView = (props) => {
   const {
+    label,
+    icon,
     options,
     isOpen,
     setOpen,
     onSelect,
-    selectedData,
+    selectedOptions,
     onFilter,
-    convertSelectedDataToArray,
+    convertToArray,
   } = props;
 
   const getOptionItem = (item) => (
     <Checkbox
       key={item.value}
       label={item.label}
-      checked={!!selectedData[item.value]}
+      checked={!!selectedOptions[item.value]}
       onChange={() => onSelect(item)}
     />
   );
@@ -50,11 +51,12 @@ const DropDownView = (props) => {
     </div>
   );
 
-  const countOfSelectedData = convertSelectedDataToArray().length;
+  const countOfSelectedData = convertToArray().length;
 
-  const title = isOpen || !countOfSelectedData 
-    ? "All Countries"
-    : `${countOfSelectedData} Countries`;
+  const title =
+    isOpen || !countOfSelectedData
+      ? `All ${label}`
+      : `${countOfSelectedData} ${label}`;
 
   return (
     <div className="dropdown">
@@ -62,10 +64,10 @@ const DropDownView = (props) => {
         className={clsx("main", { active: isOpen })}
         onClick={() => setOpen(!isOpen)}
       >
-        <FontAwesomeIcon icon={faEarthAfrica} className="countryIcon" />
+        <FontAwesomeIcon icon={icon} className="dropdownIcon" />
 
         <div className="content">
-          <p className="title">Countries</p>
+          <p className="title">{label}</p>
           <p className="value">{title}</p>
         </div>
 
@@ -77,19 +79,6 @@ const DropDownView = (props) => {
   );
 };
 
-DropDownView.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  selectedData: PropTypes.object,
-  setOpen: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  onFilter: PropTypes.func.isRequired,
-  convertSelectedDataToArray: PropTypes.func.isRequired,
-};
+DropDownView.propTypes = PropsView;
 
 export default DropDownView;

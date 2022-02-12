@@ -4,14 +4,8 @@ export const setCountries = (countries) => ({
   countries,
 });
 
-export const SELECT_COUNTRY = "SELECT_COUNTRY";
-export const selectCountry = (country) => ({
-  type: SELECT_COUNTRY,
-  country,
-});
-
-export const REMOVE_COUNTRY = "REMOVE_COUNTRY";
-export const removeCountry = (country) => ({
-  type: REMOVE_COUNTRY,
-  country,
+export const UPDATE_SELECT_COUNTRIES = "UPDATE_SELECT_COUNTRIES";
+export const updateSelectedCountries = (countries) => ({
+  type: UPDATE_SELECT_COUNTRIES,
+  countries,
 });
