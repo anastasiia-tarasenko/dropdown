@@ -2,8 +2,9 @@ import React from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEarthAfrica, faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faEarthAfrica, faCaretDown, faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import Search from "../search";
+import ButtonWithIcon from "../buttonWithIcon";
 
 import "./style.css";
 
@@ -13,6 +14,9 @@ const DropDownView = (props) => {
   const optionsContentElement = isOpen && (
     <div className={clsx("optionsContent", "fadeIn")}>
       <Search placeholder="Search Site" />
+
+      <ButtonWithIcon icon={faCirclePlus} label="Select all" />
+      <ButtonWithIcon icon={faCircleXmark} label="Select none" />
     </div>
   );
 

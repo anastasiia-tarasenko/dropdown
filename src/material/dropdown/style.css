@@ -84,3 +84,7 @@
   width: 100%;
   overflow-y: auto;
 }
+
+.optionsContent > button {
+  margin-top: 15px;
+}
