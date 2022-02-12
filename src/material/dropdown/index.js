@@ -78,11 +78,11 @@ const DropDown = (props) => {
       setOpen={setOpen}
       onSelect={onSelect}
       onFilter={onFilter}
-      convertToArray={convertToArray}
       onSelectAll={onSelectAll}
       onSelectNone={onSelectNone}
       search={search}
       handleSearch={handleSearch}
+      countOfSelectedData={convertToArray().length}
     />
   );
 };

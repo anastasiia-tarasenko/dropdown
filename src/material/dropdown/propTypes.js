@@ -34,5 +34,5 @@ export const PropsView = {
   onSelectNone: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
   handleSearch: PropTypes.func.isRequired,
-  convertToArray: PropTypes.func.isRequired,
+  countOfSelectedData: PropTypes.number.isRequired,
 }

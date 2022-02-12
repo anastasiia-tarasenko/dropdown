@@ -28,10 +28,8 @@ const DropDownView = (props) => {
     onSelectNone,
     search,
     handleSearch,
-    convertToArray,
+    countOfSelectedData,
   } = props;
-
-  const countOfSelectedData = convertToArray().length;
 
   const getOptionItem = (item) => (
     <Checkbox
