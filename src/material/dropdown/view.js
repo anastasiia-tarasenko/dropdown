@@ -9,6 +9,12 @@ import "./style.css";
 const DropDownView = (props) => {
   const { options, isOpen, setOpen } = props;
 
+  const optionsContentElement = isOpen && (
+    <div className={clsx("optionsContent", "fadeIn")}>
+      Options Content
+    </div>
+  )
+
   return (
     <div className="dropdown">
       <div
@@ -24,6 +30,8 @@ const DropDownView = (props) => {
 
         <FontAwesomeIcon icon={faCaretDown} className="arrowIcon" />
       </div>
+
+      {optionsContentElement}
     </div>
   );
 };
