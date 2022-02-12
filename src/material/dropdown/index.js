@@ -11,7 +11,8 @@ const DropDown = (props) => {
     ...otherProps
   } = props;
 
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
 
   const convertToArray = () =>
     Object.entries(selectedOptions).map(([value, label]) => ({
@@ -52,10 +53,26 @@ const DropDown = (props) => {
     updateSelectedOptions({});
   };
 
+  const handleSearch = (event) => {
+    const { value } = event.target;
+
+    setSearch(value);
+  };
+
+  const getOptions = () => {
+    if (search) {
+      return options.filter((value) =>
+        value.label.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
+    return options;
+  };
+
   return (
     <DropDownView
       {...otherProps}
-      options={options}
+      options={getOptions()}
       selectedOptions={selectedOptions}
       isOpen={isOpen}
       setOpen={setOpen}
@@ -64,6 +81,8 @@ const DropDown = (props) => {
       convertToArray={convertToArray}
       onSelectAll={onSelectAll}
       onSelectNone={onSelectNone}
+      search={search}
+      handleSearch={handleSearch}
     />
   );
 };

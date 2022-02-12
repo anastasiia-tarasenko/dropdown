@@ -32,5 +32,7 @@ export const PropsView = {
   onFilter: PropTypes.func.isRequired,
   onSelectAll: PropTypes.func.isRequired,
   onSelectNone: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
+  handleSearch: PropTypes.func.isRequired,
   convertToArray: PropTypes.func.isRequired,
 }

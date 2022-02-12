@@ -26,6 +26,8 @@ const DropDownView = (props) => {
     onFilter,
     onSelectAll,
     onSelectNone,
+    search,
+    handleSearch,
     convertToArray,
   } = props;
 
@@ -42,7 +44,11 @@ const DropDownView = (props) => {
 
   const optionsContentElement = isOpen && (
     <div className="optionsContent fadeIn">
-      <Search placeholder="Search Site" />
+      <Search
+        placeholder="Search Site"
+        value={search}
+        onChange={handleSearch}
+      />
 
       <ButtonWithIcon
         icon={faCirclePlus}
