@@ -2,8 +2,14 @@ import React from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEarthAfrica, faCaretDown, faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEarthAfrica,
+  faCaretDown,
+  faCirclePlus,
+  faCircleXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import Search from "../search";
+import Button from "../button";
 import ButtonWithIcon from "../buttonWithIcon";
 
 import "./style.css";
@@ -17,6 +23,10 @@ const DropDownView = (props) => {
 
       <ButtonWithIcon icon={faCirclePlus} label="Select all" />
       <ButtonWithIcon icon={faCircleXmark} label="Select none" />
+
+      <div className="optionsList"></div>
+
+      <Button label="Filter" />
     </div>
   );
 
