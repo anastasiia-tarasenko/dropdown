@@ -16,10 +16,15 @@ import Checkbox from "../checkbox";
 import "./style.css";
 
 const DropDownView = (props) => {
-  const { options, isOpen, setOpen } = props;
+  const { options, isOpen, setOpen, onSelect, selectedData } = props;
 
   const getOptionItem = (item) => (
-    <Checkbox key={item.value} label={item.label} />
+    <Checkbox
+      key={item.value}
+      label={item.label}
+      checked={!!selectedData[item.value]}
+      onChange={() => onSelect(item)}
+    />
   );
 
   const optionsListElement = options.map(getOptionItem);
@@ -66,7 +71,9 @@ DropDownView.propTypes = {
       value: PropTypes.string.isRequired,
     })
   ).isRequired,
+  selectedData: PropTypes.object,
   setOpen: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default DropDownView;
