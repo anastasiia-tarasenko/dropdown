@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import DropDown from "../material/dropdown/dropdown";
+import DropDown from "../material/dropdown";
 import { setCountries } from "../state/actions/dropdownstatus";
 import countriesJson from "../countries.json";
 
