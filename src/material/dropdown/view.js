@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import clsx from "clsx";
 import { PropsView } from "./propTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,16 +31,16 @@ const DropDownView = (props) => {
     countOfSelectedData,
   } = props;
 
-  const getOptionItem = (item) => (
+  const getOptionItem = useCallback((item) => (
     <Checkbox
       key={item.value}
       label={item.label}
       checked={!!selectedOptions[item.value]}
       onChange={() => onSelect(item)}
     />
-  );
+  ), [onSelect, selectedOptions]);
 
-  const optionsListElement = options.map(getOptionItem);
+  const optionsListElement = useMemo(() => options.map(getOptionItem), [getOptionItem, options]);
 
   const optionsContentElement = isOpen && (
     <div className="optionsContent fadeIn">

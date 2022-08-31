@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Props } from "./propTypes";
 import DropDownView from "./view";
 
@@ -13,13 +13,13 @@ const DropDown = (props) => {
   const [isOpen, setOpen] = useState(false);
   const [search, setSearch] = useState("");
 
-  const convertToArray = () =>
+  const convertToArray = useCallback(() =>
     Object.entries(selectedOptions).map(([value, label]) => ({
       label,
       value,
-    }));
+    })), [selectedOptions]);
 
-  const onSelect = (value) => {
+  const onSelect = useCallback((value) => {
     let result = { ...selectedOptions };
 
     if (selectedOptions[value.value]) {
@@ -29,36 +29,36 @@ const DropDown = (props) => {
     }
 
     updateSelectedOptions(result);
-  };
+  }, [selectedOptions, updateSelectedOptions]);
 
-  const onFilter = () => {
+  const onFilter = useCallback(() => {
     setOpen(false);
 
     const result = convertToArray();
 
     console.log("FILTER", result);
-  };
+  }, [convertToArray]);
 
-  const onSelectAll = () => {
+  const onSelectAll = useCallback(() => {
     const newSelectedOptions = options.reduce(
       (obj, cur) => ({ ...obj, [cur.value]: cur.label }),
       {}
     );
 
     updateSelectedOptions(newSelectedOptions);
-  };
+  }, [options, updateSelectedOptions]);
 
-  const onSelectNone = () => {
+  const onSelectNone = useCallback(() => {
     updateSelectedOptions({});
-  };
+  }, [updateSelectedOptions]);
 
-  const handleSearch = (event) => {
+  const handleSearch = useCallback((event) => {
     const { value } = event.target;
 
     setSearch(value);
-  };
+  }, []);
 
-  const getOptions = () => {
+  const getOptions = useCallback(() => {
     if (search) {
       return options.filter((value) =>
         value.label.toLowerCase().includes(search.toLowerCase())
@@ -66,7 +66,7 @@ const DropDown = (props) => {
     }
 
     return options;
-  };
+  }, [options, search]);
 
   return (
     <DropDownView
